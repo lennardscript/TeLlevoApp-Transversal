@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-toolbar color="Dark">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home-pasajero"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+  <img src="https://blogapi.uber.com/wp-content/uploads/2018/08/Pickups-reoojo-1.gif" />
+
+  </ion-card>
+  <ion-list color="color1">
+    <ion-list-header> Online </ion-list-header>
+
+    <ion-item  [routerLink]="['/ubicacion-ychoferelegido']" color="dark">
+      <ion-avatar slot="start">
+        <img src="https://www.megautos.com/wp-content/uploads/2017/08/VW-Gol-2017-frente.jpg" />
+      
+      </ion-avatar>
+      <ion-label>
+        <h2>Jerson</h2>
+        <h3>Hora estimada en salir :</h3>
+        <p>30 minutos...</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>

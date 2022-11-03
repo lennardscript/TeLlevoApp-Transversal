@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title></ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <img src="https://blogapi.uber.com/wp-content/uploads/2018/08/gid-ruta-compartida.gif" />
+
+  </ion-card>
+  <ion-list>
+    <ion-list-header> Online </ion-list-header>
+
+    <ion-item  [routerLink]="['/ubicacion-ychoferelegido']">
+      <ion-avatar slot="start">
+        <img src="https://www.megautos.com/wp-content/uploads/2017/08/VW-Gol-2017-frente.jpg" />
+      </ion-avatar>
+      <ion-label>
+        <ion-text color="">
+          <h2>Nicolás Varas</h2>
+          </ion-text>
+        <h3>Hora estimada en llegar:</h3>
+        <p>30 minutos...</p>
+        <ion-text color="success">
+          <h4>$4.000</h4>
+        </ion-text>
+      </ion-label>
+    </ion-item>
+
+    <ion-item class="full">
+      <ion-avatar slot="start">
+        <img src="https://la-motorbit-media.s3.amazonaws.com/2016/06/Foto_2_.jpg" />
+      </ion-avatar>
+      <ion-label>
+        <ion-text color="">
+        <h2>Francisco Gutierrez</h2>
+        </ion-text>
+        <h3>Hora estimada en llegar:</h3>
+        <p>30 minutos...</p>
+        <ion-text color="success">
+          <h4>$3.000</h4>
+        </ion-text>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>

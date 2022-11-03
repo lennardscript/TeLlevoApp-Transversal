@@ -1,0 +1,63 @@
+<ion-header >
+  <ion-toolbar color="dark">
+    <ion-title></ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>  
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-menu side="start" menuId="first" contentId="main">
+    <ion-header>
+      <div>
+        <ion-toolbar color="primary"> 
+        </ion-toolbar>
+      </div>
+    </ion-header>
+    <ion-content>
+      <ion-list >
+        <ion-item  [routerLink]="['/perfil-pasajero']" color="light"><ion-icon name="person-circle-outline"></ion-icon>perfil</ion-item>
+        <ion-item color="light"><ion-icon name="albums-outline" ></ion-icon>Historial Viajes</ion-item>
+        <ion-item color="light"><ion-icon name="settings-outline"></ion-icon> Metodos de pago</ion-item>
+        <ion-item color="light"><ion-icon name="settings-outline"></ion-icon>Configuracion</ion-item>
+        <ion-item color="light" (click)="cerrarsesion()"><ion-icon name="log-out-outline"></ion-icon> Cerrar Sesión</ion-item>
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+  <ion-router-outlet id="main"></ion-router-outlet>
+  <ion-card>
+    <img src="https://depor.com/resizer/tWkgaFkRSfQvJrxQJP3zxVe35K4=/580x330/smart/filters:format(jpeg):quality(75)/cloudfront-us-east-1.images.arcpublishing.com/elcomercio/DOSTJYG5PVBK3ELX3UXALXJYPQ.jpg" />
+  </ion-card >
+  <ion-card class="color1">
+    <ion-list *ngFor="let aux of viajess" class="color1">
+      <ion-item  [routerLink]="['/ubicacion-ychoferelegido']" color="dark">
+        <ion-avatar slot="start">
+          <img src="https://www.megautos.com/wp-content/uploads/2017/08/VW-Gol-2017-frente.jpg" />
+        </ion-avatar>
+        <ion-label>
+          <ion-text >
+            <h2>{{ aux.nombre }}</h2>
+            <h5>Destino : {{ aux.final }} </h5>
+            <h2></h2>
+            </ion-text>
+
+          <ion-text color="success">
+            <h2> $ {{ aux.precio }}</h2>
+          </ion-text>
+        </ion-label>
+      </ion-item>
+      <ion-item color="dark" *ngFor="let aux of viajes">
+        <ion-card class="">
+          <ion-card-content color="light">
+            <ion-card-subtitle color="light"> <h2> inicio : {{ aux.inicio }}</h2></ion-card-subtitle>
+            <h2 color="light"> Destino : {{ aux.final }}</h2> 
+          </ion-card-content>
+        </ion-card>
+       
+      </ion-item>
+      
+    </ion-list>
+  </ion-card> 
+
+</ion-content>

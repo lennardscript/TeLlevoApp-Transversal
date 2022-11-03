@@ -1,0 +1,58 @@
+<h1>Mapa Angular</h1>
+
+<button (click)="mapRuta()">Calcular ruta</button>
+<h1>La distancia es: {{distancia}}</h1>
+
+
+
+
+  <ion-header >
+    <ion-toolbar color="dark">
+      <ion-title></ion-title>
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>  
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content>
+    <ion-menu side="start" menuId="first" contentId="main">
+      <ion-header>
+        <div>
+          <ion-toolbar color="primary"> 
+          </ion-toolbar>
+        </div>
+      </ion-header>
+      <ion-content>
+        <ion-list >
+          <ion-item  [routerLink]="['/perfil-pasajero']" color="light"><ion-icon name="person-circle-outline"></ion-icon>perfil</ion-item>
+          <ion-item color="light"><ion-icon name="albums-outline" ></ion-icon>Historial Viajes</ion-item>
+          <ion-item color="light"><ion-icon name="settings-outline"></ion-icon> Metodos de pago</ion-item>
+          <ion-item color="light"><ion-icon name="settings-outline"></ion-icon>Configuracion</ion-item>
+          <ion-item color="light" (click)="cerrarsesion()"><ion-icon name="log-out-outline"></ion-icon> Cerrar Sesión</ion-item>
+        </ion-list>
+      </ion-content>
+    </ion-menu>
+    <ion-router-outlet id="main"></ion-router-outlet>
+    <ion-card>
+      <img src="https://depor.com/resizer/tWkgaFkRSfQvJrxQJP3zxVe35K4=/580x330/smart/filters:format(jpeg):quality(75)/cloudfront-us-east-1.images.arcpublishing.com/elcomercio/DOSTJYG5PVBK3ELX3UXALXJYPQ.jpg" />
+    </ion-card >
+    <ion-card class="color1">
+      <ion-list [formGroup]="formMapas" (ngSubmit)="onSubmit()">
+        <input type="text" placeholder="Direccion" formControlName="direccion" />
+        <input type="text" placeholder="Edificio, departamento, piso (opcional)" formControlName="referencia" />
+        <input type="text" placeholder="Ciudad" class="ciudad" formControlName="ciudad" />
+        <input type="text" placeholder="Provincia" formControlName="provincia" />
+        <div class="half-input-container">
+          <input type="text" class="half-input" placeholder="Region" formControlName="region" />
+        </div>
+  
+        <button class="button-cta" type="submit">Guardar</button>
+
+      <div class="mapa" #divMap></div>
+      
+      </ion-list>
+    </ion-card> 
+  
+  </ion-content>
+  
