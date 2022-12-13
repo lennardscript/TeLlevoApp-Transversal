@@ -1,2 +1,7 @@
 # TeLlevoApp-Transversal
-Última entrega para la transversal
+
+|Integrantes |
+|----------- |
+|Leandro Burgos|
+|Nicolás Varas|
+|Patricio Morales|
