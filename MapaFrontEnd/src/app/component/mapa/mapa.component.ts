@@ -88,7 +88,9 @@ async GUARDAR(txtConductor,txtprecio,txtHora) {
   precio: txtprecio.value,
   id_conductor : uid,
   hora : txtHora.value,
-  estado : ''
+  estado : '',
+  latitud : '',
+  longitud : ''
   
 } 
   Swal.fire({
