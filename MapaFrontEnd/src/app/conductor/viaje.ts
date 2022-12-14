@@ -7,4 +7,7 @@ export interface Viaje {
     id_conductor: string,
     hora : string,
     estado : string
+    latitud : string,
+    longitud : string
+
 }
