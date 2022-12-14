@@ -21,8 +21,19 @@ const routes: Routes = [
     loadChildren: () => import('./conductor/perfil-conductor/perfil-conductor.module').then( m => m.PerfilConductorPageModule)
   },
   {
+    
     path: 'home-pasajero',
-    loadChildren: () => import('./pasajero/home-pasajero/home-pasajero.module').then( m => m.HomePasajeroPageModule)
+    children:[
+      {
+        path: '',
+        loadChildren: () => import('./pasajero/home-pasajero/home-pasajero.module').then( m => m.HomePasajeroPageModule)
+      },
+      {
+        path: ':id',
+        loadChildren: () => import('./pasajero/home-pasajero/detalle/detalle.module').then( m => m.DetallePageModule)
+      },
+    ]
+    
   },
   {
     path: 'perfil-pasajero',
@@ -33,25 +44,32 @@ const routes: Routes = [
     loadChildren: () => import('./pasajero/buscar-ubicacion/buscar-ubicacion.module').then( m => m.BuscarUbicacionPageModule)
   },
   {
-    path: 'ubicacion-ychoferelegido',
-    loadChildren: () => import('./pasajero/ubicacion-ychoferelegido/ubicacion-ychoferelegido.module').then( m => m.UbicacionYchoferelegidoPageModule)
-  },
-  {
     path: 'buscarpasajero',
     loadChildren: () => import('./conductor/buscarpasajero/buscarpasajero.module').then( m => m.BuscarpasajeroPageModule)
   },
-  {
-    path: 'registro-usuario',
-    loadChildren: () => import('./registro-usuario/registro-usuario.module').then( m => m.RegistroUsuarioPageModule)
-  },
-  {
+  { 
     path: 'tipousuario',
     loadChildren: () => import('./tipousuario/tipousuario.module').then( m => m.TipousuarioPageModule)
   },
   {
     path: 'mapa', component : MapaComponent
   },
-  
+  {
+    path: 'qrcode',
+    loadChildren: () => import('./qrcode/qrcode.module').then( m => m.QrcodePageModule)
+  },
+  {
+    path: 'registro',
+    loadChildren: () => import('./registro/registro.module').then( m => m.RegistroPageModule)
+  },
+  {
+    path: 'userslist',
+    loadChildren: () => import('./api/userslist/userslist.module').then( m => m.UserslistPageModule)
+  },
+  {
+    path: 'profile/:id',
+    loadChildren: () => import('./api/profile/profile.module').then( m => m.ProfilePageModule)
+  },
 ];
 
 @NgModule({

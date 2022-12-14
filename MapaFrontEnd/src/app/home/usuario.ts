@@ -1,5 +1,5 @@
 export interface Usuario {
-    uid : string,
+    id : string,
     tipo: string,
     nombre : string,
     pass: string,

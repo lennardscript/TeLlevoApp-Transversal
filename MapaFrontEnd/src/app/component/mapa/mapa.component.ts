@@ -3,15 +3,25 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms'
 import { ElementRef, ViewChild, Renderer2 } from '@angular/core'
-
-
+import { AlertController } from '@ionic/angular';
+import { Geolocation } from '@awesome-cordova-plugins/geolocation/ngx';
+import { FirebaseService } from 'src/app/services/firebase.service';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { Viaje } from 'src/app/conductor/viaje';
+import { TranslateService } from '@ngx-translate/core';
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-mapa',
   templateUrl: './mapa.component.html',
   styleUrls: ['./mapa.component.scss']
 })
 export class MapaComponent implements OnInit {
-
+  handleRefresh(event) {
+    setTimeout(() => {
+      // Any calls to load data go here
+      event.target.complete();
+    }, 2000);
+  };
   @ViewChild('divMap') divMap!: ElementRef;
   @ViewChild('inputPlaces') inputPlaces!: ElementRef;
 
@@ -21,7 +31,7 @@ export class MapaComponent implements OnInit {
   formMapas!: FormGroup;
 
 
-  constructor(private renderer: Renderer2) {
+  constructor(private translateService: TranslateService,private auth: AngularFireAuth,private renderer: Renderer2, private alerta : AlertController,private geolocation: Geolocation , private servicio : FirebaseService) {
     this.markers = [];
 
     this.formMapas = new FormGroup({
@@ -31,13 +41,16 @@ export class MapaComponent implements OnInit {
       referencia: new FormControl(''),
       ciudad: new FormControl(''),
       provincia: new FormControl(''),
-      region: new FormControl('')
+      region: new FormControl(''),
     })
   }
 
   ngOnInit(): void {
   }
-
+  changeLang(event) {
+    this.translateService.use(event.detail.value);
+    console.log(event.detail.value)
+  }
   ngAfterViewInit(): void {
 
     const opciones = {
@@ -63,11 +76,33 @@ export class MapaComponent implements OnInit {
   };
 
 
+async GUARDAR(txtConductor,txtprecio,txtHora) {
+  const uid = await this.servicio.getuid();
+
+
+  const per : Viaje = {
+  uid :  this.servicio.getId(),
+  conductor: txtConductor.value,
+  pasajero: '',
+  direccion: this.formMapas.value.direccion,
+  precio: txtprecio.value,
+  id_conductor : uid,
+  hora : txtHora.value,
+  estado : ''
+  
+} 
+  Swal.fire({
+  icon:'success',
+  title:'Viaje creado correctamente',
+  heightAuto: false
+})
+this.servicio.createDoc(per, 'viajes', per.uid)
+  
+}
 
   onSubmit() {
-    console.log("Datos del formulario: ", this.formMapas.value)
+    console.log("Datos del formulario: ", this.formMapas.value.direccion)
   };
-
 
   //calcular ruta
   mapRuta() {
@@ -80,7 +115,7 @@ export class MapaComponent implements OnInit {
     directionService.route({
 
       origin: 'Duoc puente alto',
-      destination: 'La cisterna',
+      destination:  this.mapa.getCenter(),
       travelMode: google.maps.TravelMode.DRIVING
 
     }, resultado => {
@@ -93,7 +128,6 @@ export class MapaComponent implements OnInit {
 
   }
 
-
   private cargarAutocomplete() {
 
     const autocomplete = new google.maps.places.Autocomplete(this.renderer.selectRootElement(this.inputPlaces.nativeElement), {
@@ -104,12 +138,11 @@ export class MapaComponent implements OnInit {
       types: ["address"],
     })
 
-
     google.maps.event.addListener(autocomplete, 'place_changed', () => {
 
       const place: any = autocomplete.getPlace();
       console.log("el place completo es:", place)
-
+       
       this.mapa.setCenter(place.geometry.location);
       const marker = new google.maps.Marker({
         position: place.geometry.location
@@ -149,9 +182,6 @@ export class MapaComponent implements OnInit {
       region: 'administrative_area_level_1'
     };
 
-
-
-
     Object.entries(componentForm).forEach(entry => {
       const [key, value] = entry;
 
@@ -164,7 +194,7 @@ export class MapaComponent implements OnInit {
   cargarMapa(position: any): any {
 
     const opciones = {
-      center: new google.maps.LatLng(position.coords.latitude, position.coords.longitude),
+      center: new google.maps.LatLng(-33.598510621113626, -70.57907100242673),
       zoom: 17,
       mapTypeId: google.maps.MapTypeId.ROADMAP
     };
@@ -179,6 +209,5 @@ export class MapaComponent implements OnInit {
     markerPosition.setMap(this.mapa);
     this.markers.push(markerPosition);
   };
-
 
 }

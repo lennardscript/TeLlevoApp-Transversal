@@ -5,7 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 
 import { TipousuarioPageRoutingModule } from './tipousuario-routing.module';
-
+import { TranslateModule } from '@ngx-translate/core';
 import { TipousuarioPage } from './tipousuario.page';
 
 @NgModule({
@@ -13,7 +13,8 @@ import { TipousuarioPage } from './tipousuario.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    TipousuarioPageRoutingModule
+    TipousuarioPageRoutingModule,
+    TranslateModule
   ],
   declarations: [TipousuarioPage]
 })

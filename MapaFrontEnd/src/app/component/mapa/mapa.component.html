@@ -1,39 +1,58 @@
 
-<h1>Mapa Angular</h1> 
-
-
-<div id="indicators"></div>
-
-<div class="mapa" #divMap></div>
-<h1>La distancia es: {{distancia}}</h1>
-<button (click)="mapRuta()">Calcular ruta</button>
-
-<ion-content></ion-content>
-<div class="formulario">
-    <form [formGroup]="formMapas" (ngSubmit)="onSubmit()">
-  
-      <input type="text" #inputPlaces id="inputPlaces" formControlName="busqueda">
-  
-      <div class="form panel">
-  
-        <div>
-          <img class="sb-title-icon" src="https://fonts.gstatic.com/s/i/googlematerialicons/location_pin/v5/24px.svg"
-            alt="">
-        </div>
-  
-        <input type="text" placeholder="Direccion" formControlName="direccion" />
-        <input type="text" placeholder="Edificio, departamento, piso (opcional)" formControlName="referencia" />
-        <input type="text" placeholder="Ciudad" class="ciudad" formControlName="ciudad" />
-        <input type="text" placeholder="Provincia" formControlName="provincia" />
-        <div class="half-input-container">
-          <input type="text" class="half-input" placeholder="Region" formControlName="region" />
-        </div>
-  
-        <button class="button-cta" type="submit">Guardar</button>
-  
+<ion-header >
+  <ion-toolbar color="dark">
+    <ion-title></ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>  
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-menu side="start" menuId="first" contentId="main">
+    <ion-header>
+      <div>
+        <ion-toolbar color="primary"> 
+        </ion-toolbar>
       </div>
-
-      
-      
+    </ion-header>
+    <ion-content>
+      <ion-list >
+        <ion-item  [routerLink]="['/perfil-pasajero']" color="light"><ion-icon name="person-circle-outline"></ion-icon>perfil</ion-item>
+        <ion-item color="light"><ion-icon name="albums-outline" ></ion-icon>Historial Viajes</ion-item>
+        <ion-item color="light"><ion-icon name="settings-outline"></ion-icon> Metodos de pago</ion-item>
+        <ion-item color="light"><ion-icon name="settings-outline"></ion-icon>Configuracion</ion-item>
+        <ion-item color="light" (click)="cerrarsesion()"><ion-icon name="log-out-outline"></ion-icon> Cerrar Sesión</ion-item>
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+  <ion-router-outlet id="main"></ion-router-outlet>
+  <ion-card>
+    <div class="mapa" #divMap></div>
+  </ion-card >
+  <ion-card class="color1">
+    <form [formGroup]="formMapas" (ngSubmit)="onSubmit()">
+      <div class="form panel">
+        <div>
+          <input type="text"  #inputPlaces id="inputPlaces" formControlName="busqueda">
+          <ion-item color="dark">
+            <ion-label position="floating">{{ "Nombre Conductor:" | translate }} </ion-label>
+              <ion-input type="text"  #txtConductor></ion-input>
+          </ion-item>
+          <ion-item color="dark">
+            <ion-label position="floating">{{ "Precio:" | translate }}</ion-label>
+              <ion-input type="text"  #txtprecio></ion-input>
+          </ion-item>
+          <ion-item color="dark">
+            <ion-label position="floating">{{ "Hora:" | translate }}</ion-label>
+              <ion-input type="text"  #txtHora></ion-input>
+          </ion-item>
+          
+          <ion-button expand="full" (click)="mapRuta()" color="warning">{{ "Calcular ruta" | translate }}</ion-button>
+          <h3 color="dark" >{{ "La distancia es" | translate}} {{distancia}}</h3>
+        </div>
+        <ion-button expand="full" type="submit" color="danger" (click)="GUARDAR(txtConductor,txtprecio,txtHora)">{{ "Crear viaje" | translate }}</ion-button>        
+      </div>      
     </form>
-  </div>
+  </ion-card> 
+
+</ion-content>

@@ -1,10 +1,12 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { Router } from '@angular/router';
 import { LoadingController, ToastController } from '@ionic/angular';
 import { GoogleAuthProvider,GithubAuthProvider } from "firebase/auth";
-import { Router } from '@angular/router';
+
 import { userFire } from '../home/userfire';
+import { Usuario } from '../home/usuario';
 
 @Injectable({
   providedIn: 'root'
@@ -36,6 +38,22 @@ export class FirebaseService {
     getCollection<tipo>(path: string) {
       const collection = this.database.collection<tipo>(path);
       return collection.valueChanges();
+    }
+
+    idviaje(uid){
+      const idviaje =  this.database.collection('viaje').get(uid)
+      return idviaje
+    }
+
+    async getuid(){
+      const user = await this.auth.currentUser
+      if(user === null ){
+        return null
+      }else {
+        return user.uid
+      }
+
+
     }
 
     async mensaje(mensaje: string) {
@@ -91,12 +109,11 @@ export class FirebaseService {
     return (await this.auth.currentUser).email;
   }
 
-  
 async ObtenerUsuario(){
     const aux : userFire = await this.auth.currentUser;
     return aux;
   }
-
+  
 
   googleSignIn() {
     return this.auth.signInWithPopup(new GoogleAuthProvider).then(res => {

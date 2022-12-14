@@ -1,20 +1,20 @@
 <ion-header >
-  <ion-toolbar color="dark centrado">
-      <ion-title class="">Iniciar Sesion</ion-title>
+    <ion-toolbar color="dark centrado">
+      <ion-title class="">{{ "Iniciar Sesion" | translate }} </ion-title>
   </ion-toolbar>
 </ion-header>
-<ion-content class="color1" >    
+<ion-content class="color1" >
   <img src="../../assets/img/white-car-vector.png" alt="" class=" left" width="300px" >
-
+  
   <ion-card class="color1">
     <ion-card-content >
       <ion-item color="dark">
-        <ion-label position="floating" >Correo:</ion-label>
+        <ion-label position="floating" >{{ "Correo:" | translate }} </ion-label>
         <ion-input type="text" #txtEmail></ion-input>
       </ion-item>
       <ion-item color="dark">
-        <ion-label position="floating">Contraseña:</ion-label>
-          <ion-input type="password"  #txtPass></ion-input>
+        <ion-label position="floating">{{ "Contraseña:" | translate }} </ion-label>
+        <ion-input type="password"  #txtPass></ion-input>
       </ion-item>
       <ion-grid>
         <ion-row>
@@ -25,14 +25,19 @@
             <a (click)="GitHubLogin()" style="text-decoration: none;cursor: pointer;">
               <img src="../../assets/img/github.png" alt="" width="40px"> 
             </a>
-            <ion-button expand="full" (click)  ="login(txtEmail,txtPass)" color="dark">Iniciar Sesion</ion-button>
-            <ion-button expand="full" (click)="agregar()" color="dark">registrar</ion-button>
-            <ion-button expand="full" [routerLink]="['/mapa']" color="dark">recuperar</ion-button>
+            <ion-button expand="full" (click)  ="login(txtEmail,txtPass)" color="dark">{{ "Iniciar Sesion" | translate }}</ion-button>
+            <ion-button expand="full" [routerLink]="['/registro']" color="dark">{{ "registro" | translate }}</ion-button>
+            <ion-button expand="full"  color="dark">{{ "recuperar" | translate}} </ion-button>
+            <ion-item class="select">
+              <ion-label>{{ "selecciona" | translate }}</ion-label>
+              <ion-select cancelText="Cancel" [(ngModel)]="idioma" placeholder="Selecciona" (ionChange)="changeLang($event)">
+                <ion-select-option *ngFor="let lang of langs">{{ lang }}</ion-select-option>
+              </ion-select>
+            </ion-item>
+            
           </ion-col>
         </ion-row>
         </ion-grid>
-    </ion-card-content>
-  </ion-card>
-
-
-</ion-content>
+      </ion-card-content>
+    </ion-card>    
+  </ion-content>

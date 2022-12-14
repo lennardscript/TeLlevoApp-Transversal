@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+
 import { AlertController } from '@ionic/angular';
 import { Viaje } from 'src/app/conductor/viaje';
 import { Usuario } from 'src/app/home/usuario';

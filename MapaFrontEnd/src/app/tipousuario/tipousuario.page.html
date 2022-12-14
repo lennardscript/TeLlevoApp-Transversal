@@ -4,7 +4,7 @@
   </ion-toolbar>
 </ion-header>
 <ion-content class="color1" >    
-  <ion-title color="light" class="centrado left2">Tipo de usuario </ion-title>
+  <ion-title color="light" class="centrado left2">{{ "Tipo de usuario" | translate }} </ion-title>
 
   <img src="../../assets/img/white-car-vector.png" alt="" class="left" width="300px" >
 
@@ -12,10 +12,10 @@
     
     <ion-card-content >
       <ion-item color="dark">
-        <ion-button expand="full" [routerLink]="['/mapa']" color="dark">pasajero</ion-button>
+        <ion-button expand="full" [routerLink]="['/mapa']" color="dark">{{ "Conductor" | translate }}</ion-button>
       </ion-item>
       <ion-item color="dark">
-        <ion-button expand="full"[routerLink]="['/home-conductor']" color="dark">conductor</ion-button>
+        <ion-button expand="full"[routerLink]="['/home-pasajero']" color="dark">{{ "Pasajero" | translate }}</ion-button>
       </ion-item>
     </ion-card-content>
   </ion-card>

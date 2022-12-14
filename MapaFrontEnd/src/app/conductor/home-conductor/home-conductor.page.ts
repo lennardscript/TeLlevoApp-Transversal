@@ -71,7 +71,7 @@ export class HomeConductorPage implements OnInit {
 
     directionService.route({
 
-      origin: 'Quilpué, Chile',
+      origin: 'Duoc, puente alto',
       destination: 'Viña del Mar, Chile',
       travelMode: google.maps.TravelMode.DRIVING
 
@@ -177,7 +177,7 @@ export class HomeConductorPage implements OnInit {
 
   onSubmit() {
     console.log("Datos del formulario: ", this.formMapas.value)
-  };
+  }
 
   ngOnInit() {
     //this.personajes = this.servicio.obternerPersonajes()
@@ -204,16 +204,16 @@ export class HomeConductorPage implements OnInit {
 
 
 
-  async agregar(txtnombre, txtinicio, txtFinal,txtPrecio) {
+/*/async agregar(direccion, referencia, ciudad,provincia) {
     this.servicio.ObtenerUsuario().then(
       (resp) => {
         if(resp.emailVerified){
             const per: Viaje = {
             id: this.servicio.getId(),
-            nombre: txtnombre.value,
-            inicio: txtinicio.value,
-            final: txtFinal.value,
-            precio: txtPrecio.value
+            nombre: direccion.value,
+            inicio: referencia.value,
+            final: ciudad.value,
+            precio: provincia.value
           }
 
             this.servicio.cargarLoading("Almacenando viaje...")
@@ -242,5 +242,5 @@ export class HomeConductorPage implements OnInit {
     this.servicio.logout();
     this.router.navigate(['/home']);
   }
-
+*/
   }

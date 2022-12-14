@@ -1,0 +1,54 @@
+<ion-header>
+  <ion-toolbar color="Dark">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="dark">
+  <ion-title color="light" class="centrado left2"> Registro  </ion-title>
+
+  <img src="../../assets/img/white-car-vector.png" alt="" class="left" width="300px" >
+
+  <ion-card>
+    <ion-card-content>
+      <div class="">
+
+        <div color="">
+          <div class="">
+            <div class="">
+              <ion-item color="dark">
+                <ion-label position="floating">Nombre</ion-label>
+                <ion-input [(ngModel)]= user.usuario type="text" required></ion-input>
+              </ion-item>
+            </div>
+            <div class="">
+              <ion-item color="dark">
+                <ion-label position="floating">Contraseña</ion-label>
+                <ion-input [(ngModel)]= user.pass type="password" required></ion-input>
+              </ion-item>
+            </div>
+            <div class="">
+              <ion-item  color="dark">
+                <ion-label position="floating">Correo</ion-label>
+                <ion-input [(ngModel)]= user.email type="text" required></ion-input>
+              </ion-item>
+            </div>
+            <div class="">
+              <ion-item  color="dark">
+                <ion-label position="floating">tipo</ion-label>
+                <ion-input [(ngModel)]= user.tipo type="text" required></ion-input>
+              </ion-item>
+            </div>
+            
+          </div>
+          <div class="">
+            <ion-button class="register-button" (click)="guardar()">Registrarse</ion-button>
+          </div>
+      </div>
+      </div>
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>

@@ -13,7 +13,8 @@ import { HomePasajeroPage } from './home-pasajero.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    HomePasajeroPageRoutingModule
+    HomePasajeroPageRoutingModule,
+    
   ],
   declarations: [HomePasajeroPage]
 })

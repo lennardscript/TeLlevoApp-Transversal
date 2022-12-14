@@ -1,0 +1,15 @@
+{
+    "Iniciar Sesion" : "Login",
+    "Correo:": "email",
+    "Contraseña:":" password",
+    "registro" : "Register",
+    "recuperar" : "recuperety",
+    "Conductor" : "driver",
+    "Pasajero" : "rider",
+    "Nombre Conductor:" : "driver",
+    "Precio:" : "price",
+    "La distancia es" : "distance is:",
+    "Calcular ruta" : "calculate route:",
+    "Crear viaje" : "create trip :",
+    "Hora:" : "hour"
+}
