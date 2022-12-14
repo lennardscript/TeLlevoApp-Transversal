@@ -30,7 +30,7 @@
 <ion-card class="ion-text-center" color="dark">
     <ion-card-content>
       <ion-card-title>
-        cerrar viaje : 
+        Unete al viaje : 
       </ion-card-title>
       <qrcode 
         [qrdata]="qrCodeString" 
@@ -39,7 +39,7 @@
       </qrcode>
     </ion-card-content>
         <ion-button (click)="agregarPasajero()">Guardar pasajero</ion-button>
-        <ion-button (click)="startScan()"  color="danger">Cerrar Viaje </ion-button>
+        <ion-button (click)="startScan()"  color="danger">Scanea para Unirte </ion-button>
 </ion-card>
     <ion-list *ngFor="let aux of viaje"  >
       <ion-item class="color1" *ngIf="aux.uid === id" color="dark">

@@ -4,10 +4,10 @@ import { Component, OnInit, Renderer2 } from '@angular/core';
 import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
 import { FirebaseService } from 'src/app/services/firebase.service';
-import Swal from 'sweetalert2'
+import Swal from 'sweetalert2';
 import {  Viaje, } from '../viaje';
-import { FormControl, FormGroup } from '@angular/forms'
-import { ElementRef, ViewChild} from '@angular/core'
+import { FormControl, FormGroup } from '@angular/forms';
+import { ElementRef, ViewChild} from '@angular/core';
 
 
 @Component({
@@ -15,6 +15,7 @@ import { ElementRef, ViewChild} from '@angular/core'
   templateUrl: './home-conductor.page.html',
   styleUrls: ['./home-conductor.page.scss'],
 })
+
 export class HomeConductorPage implements OnInit {
   @ViewChild('divMap') divMap!: ElementRef;
   @ViewChild('inputPlaces') inputPlaces!: ElementRef;
