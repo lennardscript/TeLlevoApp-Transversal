@@ -1,14 +1,16 @@
 ///<reference path="../../../../../node_modules/@types/googlemaps/index.d.ts"/>
 
-import { Component,  ElementRef, OnInit, ViewChild,Renderer2 } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild,Renderer2 } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { ActivatedRoute } from '@angular/router';
 import { Viaje } from 'src/app/conductor/viaje';
 import { FirebaseService } from 'src/app/services/firebase.service';
 import { Pasajero } from '../pasajero';
 import { BarcodeScanner } from '@capacitor-community/barcode-scanner';
+import { Router } from '@angular/router';
 import { FormGroup } from '@angular/forms';
 import Swal from 'sweetalert2';
+
 @Component({
   selector: 'app-detalle',
   templateUrl: './detalle.page.html',
@@ -16,7 +18,7 @@ import Swal from 'sweetalert2';
 })
 export class DetallePage implements OnInit {
 
-  constructor(private fire : FirebaseService, private renderer: Renderer2,private database: AngularFirestore , private activaterouted : ActivatedRoute ) {
+  constructor(private fire : FirebaseService, private renderer: Renderer2,private database: AngularFirestore , private activaterouted : ActivatedRoute,private router: Router ) {
     this.activaterouted.paramMap.subscribe(data => {
       this.id = data.get('id')
       console.log("iddd : ",this.id)
@@ -167,6 +169,11 @@ export class DetallePage implements OnInit {
 
   ngOnDestroy(): void {
       this.stopScan();
+  }
+
+  async cerrarsesion(){
+    this.fire.logout();
+    this.router.navigate(['/home']);
   }
 
 }
